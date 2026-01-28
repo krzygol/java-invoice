@@ -12,11 +12,17 @@ public class Invoice {
 
     public void addProduct(Product product) {
         // TODO: implement
+        if (product == null) {
+            throw new IllegalArgumentException();
+        }
         this.addProduct(product, 1);
     }
 
     public void addProduct(Product product, Integer quantity) {
         // TODO: implement
+        if (quantity <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.products.put(product, quantity);
     }
 
