@@ -7,19 +7,18 @@ import java.util.Map;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
-    //private Collection<Product> products = new ArrayList<>();
     private Map<Product, Integer> products = new HashMap<>();
 
     public void addProduct(Product product) {
         // TODO: implement
-        if (product == null) {
-            throw new IllegalArgumentException();
-        }
         this.addProduct(product, 1);
     }
 
     public void addProduct(Product product, Integer quantity) {
         // TODO: implement
+        if (product == null) {
+            throw new IllegalArgumentException();
+        }
         if (quantity <= 0) {
             throw new IllegalArgumentException();
         }
