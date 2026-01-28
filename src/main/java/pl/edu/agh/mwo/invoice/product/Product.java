@@ -13,6 +13,11 @@ public abstract class Product {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException();
         }
+
+        if (price == null) {
+            throw new IllegalArgumentException();
+        }
+
         this.name = name;
         this.price = price;
         this.taxPercent = tax;
