@@ -124,4 +124,20 @@ public class InvoiceTest {
     public void testAddingNullProduct() {
         invoice.addProduct(null);
     }
+
+    @Test
+    public void testInvoiceHasNumber() {
+        int number = invoice.GetNumber();
+        Assert.assertTrue(number > 0);
+    }
+
+    @Test
+    public void testTwoInvoicesHaveDifferentNumber() {
+        Invoice invoice1 = new Invoice();
+        Invoice invoice2 = new Invoice();
+        Assert.assertEquals(invoice1.GetNumber(), invoice2.GetNumber());
+    }
+
+    @Test
+    public void
 }

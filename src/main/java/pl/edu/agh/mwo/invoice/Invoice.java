@@ -3,6 +3,7 @@ package pl.edu.agh.mwo.invoice;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import pl.edu.agh.mwo.invoice.product.Product;
 
@@ -56,5 +57,17 @@ public class Invoice {
         }
 
         return value;
+    }
+
+    static int NUMBER = 1;
+    private int number;
+
+    public Invoice() {
+        this.number = NUMBER += 1;
+    }
+
+    public int GetNumber() {
+//        return new Random().nextInt(1000000 );
+        return NUMBER += 1;
     }
 }
