@@ -66,8 +66,8 @@ public class Invoice {
         this.number = NUMBER += 1;
     }
 
-    public int GetNumber() {
-//        return new Random().nextInt(1000000 );
+    public int getNumber() {
+        //        return new Random().nextInt(1000000 );
         return NUMBER += 1;
     }
 }

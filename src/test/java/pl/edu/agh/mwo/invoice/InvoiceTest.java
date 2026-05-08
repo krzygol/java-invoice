@@ -127,7 +127,7 @@ public class InvoiceTest {
 
     @Test
     public void testInvoiceHasNumber() {
-        int number = invoice.GetNumber();
+        int number = invoice.getNumber();
         Assert.assertTrue(number > 0);
     }
 
@@ -135,7 +135,7 @@ public class InvoiceTest {
     public void testTwoInvoicesHaveDifferentNumber() {
         Invoice invoice1 = new Invoice();
         Invoice invoice2 = new Invoice();
-        Assert.assertNotEquals(invoice1.GetNumber(), invoice2.GetNumber());
+        Assert.assertNotEquals(invoice1.getNumber(), invoice2.getNumber());
     }
 
 
