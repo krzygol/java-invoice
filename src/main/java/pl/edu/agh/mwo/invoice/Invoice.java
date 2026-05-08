@@ -59,15 +59,15 @@ public class Invoice {
         return value;
     }
 
-    static int NUMBER = 1;
-    private int number;
+    private static int nextNumber = 1;
+
+    private final int number;
 
     public Invoice() {
-        this.number = NUMBER += 1;
+        this.number = nextNumber++;
     }
 
     public int getNumber() {
-        //        return new Random().nextInt(1000000 );
-        return NUMBER += 1;
+        return number;
     }
 }
