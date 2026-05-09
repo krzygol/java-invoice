@@ -62,4 +62,12 @@ public class ProductTest {
 
         Assert.assertThat(new BigDecimal("128.56"), Matchers.comparesEqualTo(product.getPriceWithTax() ));
     }
+
+    @Test
+    public void testFuelCanisterWithoutVat() {
+
+        Product product = new FuelCanister("Fuel", new BigDecimal("100.0") );
+
+        Assert.assertThat(new BigDecimal("105.56"), Matchers.comparesEqualTo(product.getPriceWithTax()));
+    }
 }
