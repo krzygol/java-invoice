@@ -35,7 +35,16 @@ public class Invoice {
         if (quantity <= 0) {
             throw new IllegalArgumentException();
         }
-        this.products.put(product, quantity);
+        if (this.products.containsKey(product)) {
+
+            Integer currentQuantity = this.products.get(product);
+
+            this.products.put(product, currentQuantity + quantity);
+
+        } else {
+
+            this.products.put(product, quantity);
+        }
     }
 
     public BigDecimal getNetValue() {
