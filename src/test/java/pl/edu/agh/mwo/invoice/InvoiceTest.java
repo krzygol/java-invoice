@@ -12,8 +12,7 @@ import pl.edu.agh.mwo.invoice.product.OtherProduct;
 import pl.edu.agh.mwo.invoice.product.Product;
 import pl.edu.agh.mwo.invoice.product.TaxFreeProduct;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 public class InvoiceTest {
     private Invoice invoice;
@@ -131,7 +130,7 @@ public class InvoiceTest {
     @Test
     public void testInvoiceHasNumber() {
         int number = invoice.getNumber();
-        Assert.assertTrue(number > 0);
+        assertTrue(number > 0);
     }
 
     @Test
@@ -151,5 +150,57 @@ public class InvoiceTest {
                 invoice1.getNumber(),
                 invoice2.getNumber()
         );
+    }
+
+    @Test
+    public void shouldContainInvoiceNumber() {
+
+        Invoice invoice = new Invoice();
+
+        String result = invoice.getInvoiceAsString();
+
+        assertTrue(result.contains("Numer faktury"));
+    }
+
+    @Test
+    public void shouldContainProductName() {
+
+        Invoice invoice = new Invoice();
+
+        Product milk = new DairyProduct("Milk", new BigDecimal("5") );
+
+        invoice.addProduct(milk, 2);
+
+        String result = invoice.getInvoiceAsString();
+
+        assertTrue(result.contains("Milk"));
+    }
+
+    @Test
+    public void shouldContainProductQuantity() {
+
+        Invoice invoice = new Invoice();
+
+        Product milk = new DairyProduct("Milk", new BigDecimal("5") );
+
+        invoice.addProduct(milk, 3);
+
+        String result = invoice.getInvoiceAsString();
+
+        assertTrue(result.contains("3"));
+    }
+
+    @Test
+    public void shouldContainNumberOfEntries() {
+
+        Invoice invoice = new Invoice();
+
+        invoice.addProduct(new DairyProduct("Milk", new BigDecimal("5") ));
+
+        invoice.addProduct(new OtherProduct("Bread", new BigDecimal("10") ));
+
+        String result = invoice.getInvoiceAsString();
+
+        assertTrue(result.contains("Liczba pozycji: 2"));
     }
 }
