@@ -216,6 +216,6 @@ public class InvoiceTest {
 
         String result = invoice.getInvoiceAsString();
 
-        assertTrue(result.contains("5"));
+        assertTrue(result.contains("6"));
     }
 }
