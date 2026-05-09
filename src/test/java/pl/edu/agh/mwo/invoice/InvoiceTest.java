@@ -12,6 +12,9 @@ import pl.edu.agh.mwo.invoice.product.OtherProduct;
 import pl.edu.agh.mwo.invoice.product.Product;
 import pl.edu.agh.mwo.invoice.product.TaxFreeProduct;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 public class InvoiceTest {
     private Invoice invoice;
 
@@ -135,8 +138,18 @@ public class InvoiceTest {
     public void testTwoInvoicesHaveDifferentNumber() {
         Invoice invoice1 = new Invoice();
         Invoice invoice2 = new Invoice();
-        Assert.assertNotEquals(invoice1.getNumber(), invoice2.getNumber());
+        assertNotEquals(invoice1.getNumber(), invoice2.getNumber());
     }
 
+    @Test
+    public void shouldAssignDifferentNumbersToInvoices() {
 
+        Invoice invoice1 = new Invoice();
+        Invoice invoice2 = new Invoice();
+
+        assertNotEquals(
+                invoice1.getNumber(),
+                invoice2.getNumber()
+        );
+    }
 }
