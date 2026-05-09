@@ -203,4 +203,19 @@ public class InvoiceTest {
 
         assertTrue(result.contains("Liczba pozycji: 2"));
     }
+
+    @Test
+    public void shouldPrintMergedProductQuantity() {
+
+        Invoice invoice = new Invoice();
+
+        Product milk = new DairyProduct("Milk", new BigDecimal("5") );
+
+        invoice.addProduct(milk, 2);
+        invoice.addProduct(milk, 3);
+
+        String result = invoice.getInvoiceAsString();
+
+        assertTrue(result.contains("5"));
+    }
 }
