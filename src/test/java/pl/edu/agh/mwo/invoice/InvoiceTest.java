@@ -7,10 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import pl.edu.agh.mwo.invoice.product.DairyProduct;
-import pl.edu.agh.mwo.invoice.product.OtherProduct;
-import pl.edu.agh.mwo.invoice.product.Product;
-import pl.edu.agh.mwo.invoice.product.TaxFreeProduct;
+import pl.edu.agh.mwo.invoice.product.*;
 
 import static org.junit.Assert.*;
 
@@ -217,5 +214,15 @@ public class InvoiceTest {
         String result = invoice.getInvoiceAsString();
 
         assertTrue(result.contains("5"));
+    }
+
+    @Test
+    public void shouldPrintPriceWithExciseDuty() {
+
+        Product wine = new BottleOfWine("Wine", new BigDecimal("10") );
+
+        BigDecimal value = wine.getPriceWithTax();
+
+        assertEquals(0, value.compareTo(new BigDecimal("17.86")) );
     }
 }
