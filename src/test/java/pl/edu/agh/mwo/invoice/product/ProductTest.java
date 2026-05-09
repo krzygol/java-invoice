@@ -78,4 +78,12 @@ public class ProductTest {
 
         Assert.assertThat(BigDecimal.ZERO, Matchers.comparesEqualTo(product.getExciseDuty()));
     }
+
+    @Test
+    public void testWineHasExciseDuty() {
+
+        Product product = new BottleOfWine("Wine", new BigDecimal("100") );
+
+        Assert.assertThat(new BigDecimal("5.56"), Matchers.comparesEqualTo(product.getExciseDuty()));
+    }
 }
