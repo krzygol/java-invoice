@@ -70,4 +70,12 @@ public class ProductTest {
 
         Assert.assertThat(new BigDecimal("105.56"), Matchers.comparesEqualTo(product.getPriceWithTax()));
     }
+
+    @Test
+    public void testOtherProductHasNoExciseDuty() {
+
+        Product product = new OtherProduct("Bread", new BigDecimal("100") );
+
+        Assert.assertThat(BigDecimal.ZERO, Matchers.comparesEqualTo(product.getExciseDuty()));
+    }
 }
