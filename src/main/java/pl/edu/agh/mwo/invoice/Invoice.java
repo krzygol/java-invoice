@@ -10,6 +10,18 @@ import pl.edu.agh.mwo.invoice.product.Product;
 public class Invoice {
     private Map<Product, Integer> products = new HashMap<>();
 
+    private static int nextNumber = 1;
+
+    private final int number;
+
+    public Invoice() {
+        this.number = nextNumber++;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
     public void addProduct(Product product) {
         // TODO: implement
         this.addProduct(product, 1);
@@ -59,15 +71,28 @@ public class Invoice {
         return value;
     }
 
-    private static int nextNumber = 1;
+    public String getInvoiceAsString() {
+        StringBuilder builder = new StringBuilder();
 
-    private final int number;
+        builder.append("Numer faktury: ")
+                .append(number)
+                .append("\n\n");
 
-    public Invoice() {
-        this.number = nextNumber++;
-    }
+        for (Product product : this.products.keySet()) {
 
-    public int getNumber() {
-        return number;
+            Integer quantity = this.products.get(product);
+
+            builder.append(product.getName())
+                    .append(" | ")
+                    .append(quantity)
+                    .append(" szt. | ")
+                    .append(product.getPrice())
+                    .append("\n");
+        }
+
+        builder.append("\nLiczba pozycji: ")
+                .append(this.products.size());
+
+        return builder.toString();
     }
 }
